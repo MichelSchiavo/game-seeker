@@ -7,9 +7,9 @@ import { GameCard } from "@/components/GameCard";
 import { useSearch } from "@/hooks/useSearch";
 import { FilterByGenre } from "@/components/FilterByGenre";
 import { LoadingSpin } from "@/components/LoadingSpin";
+import { BestRated } from "@/components/BestRated";
 
 import "react-toastify/dist/ReactToastify.css";
-import { BestRated } from "@/components/BestRated";
 
 export function HomeTemplate() {
   const { user } = useAuthContext();
@@ -34,7 +34,7 @@ export function HomeTemplate() {
       <ToastContainer style={{ fontSize: "1rem" }} />
 
       <main
-        className={`flex min-h-screen px-4 flex-col items-center justify-${
+        className={`flex min-h-full px-4 flex-col items-center justify-${
           isLoading ? "center" : "between"
         }}`}
       >
@@ -73,6 +73,12 @@ export function HomeTemplate() {
                     ))}
                   </div>
                 </div>
+              </div>
+            )}
+
+            {games.length === 0 && (
+              <div className="min-h-screen flex items-center justify-center">
+                <img src="./bg-error-api.webp" alt="Background error image" />
               </div>
             )}
           </>
